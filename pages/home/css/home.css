@@ -1,0 +1,13 @@
+.card-notification{
+  float: right;
+}
+.border-all-info {
+  border: .1rem solid;
+}
+#requestList > li {
+  border-bottom: #f6c23e 1px solid;  
+}
+
+#requestList li span {
+  color: #858796;
+}

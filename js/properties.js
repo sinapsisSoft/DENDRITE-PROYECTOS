@@ -1,0 +1,1 @@
+var ajaxUserLogin = "../../php/bo/bo_user.php";
