@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-01-2021 a las 20:58:08
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.30
+-- Tiempo de generación: 15-09-2021 a las 05:11:23
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,21 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dendrite`
 --
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `action`
---
-
-DROP TABLE IF EXISTS `action`;
-CREATE TABLE `action` (
-  `Act_id` int(11) NOT NULL,
-  `Act_observation` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Act_date` datetime DEFAULT NULL,
-  `User_id` int(11) DEFAULT NULL,
-  `Req_id` int(11) NOT NULL,
-  `Stat_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -42,7 +28,6 @@ CREATE TABLE `action` (
 -- Estructura de tabla para la tabla `application`
 --
 
-DROP TABLE IF EXISTS `application`;
 CREATE TABLE `application` (
   `App_id` int(11) NOT NULL,
   `App_name` varchar(100) NOT NULL,
@@ -55,7 +40,6 @@ CREATE TABLE `application` (
 -- Estructura de tabla para la tabla `client`
 --
 
-DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `Client_id` int(11) NOT NULL,
   `Client_name` varchar(100) NOT NULL,
@@ -72,13 +56,19 @@ CREATE TABLE `client` (
   `Client_user` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `client`
+--
+
+INSERT INTO `client` (`Client_id`, `Client_name`, `Client_identification`, `Client_address`, `Client_tel`, `Client_email`, `Client_contactName`, `Client_contactTitle`, `Client_contactTel`, `Client_contactCel`, `Client_contactEmail`, `Stat_id`, `Client_user`) VALUES
+(1, 'Coominobras', '111111', '', '', '', 'Viviana Daza', 'Asesora', '', '', 'alexa.daza@coominobras.coop', 3, 0);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `company`
 --
 
-DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
   `Comp_id` int(11) NOT NULL,
   `Comp_identification` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -86,6 +76,13 @@ CREATE TABLE `company` (
   `Comp_address` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Comp_phone` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `company`
+--
+
+INSERT INTO `company` (`Comp_id`, `Comp_identification`, `Comp_name`, `Comp_address`, `Comp_phone`) VALUES
+(1, '1234567', 'Sinapsis', '', '');
 
 -- --------------------------------------------------------
 
@@ -95,8 +92,8 @@ CREATE TABLE `company` (
 
 CREATE TABLE `events` (
   `Event_id` int(11) NOT NULL,
-  `Event_title` varchar(250) CHARACTER SET utf8 NOT NULL,
-  `Event_color` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `Event_title` varchar(250) NOT NULL,
+  `Event_color` varchar(10) NOT NULL,
   `Event_start` datetime DEFAULT NULL,
   `Event_end` datetime DEFAULT NULL,
   `Client_id` int(11) DEFAULT NULL
@@ -108,12 +105,18 @@ CREATE TABLE `events` (
 -- Estructura de tabla para la tabla `login`
 --
 
-DROP TABLE IF EXISTS `login`;
 CREATE TABLE `login` (
   `Login_id` int(11) NOT NULL,
   `Login_password` varchar(30) NOT NULL,
   `User_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`Login_id`, `Login_password`, `User_id`) VALUES
+(1, '209b42103513851f9fd0e091a59e00', 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +124,6 @@ CREATE TABLE `login` (
 -- Estructura de tabla para la tabla `module`
 --
 
-DROP TABLE IF EXISTS `module`;
 CREATE TABLE `module` (
   `Mod_id` int(11) NOT NULL,
   `Mod_name` varchar(100) CHARACTER SET utf8 NOT NULL
@@ -133,14 +135,13 @@ CREATE TABLE `module` (
 -- Estructura de tabla para la tabla `new_user`
 --
 
-DROP TABLE IF EXISTS `new_user`;
 CREATE TABLE `new_user` (
   `Nuser_id` int(11) NOT NULL,
   `User_id` int(11) NOT NULL,
   `Nuser_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Nuser_hash` varchar(600) NOT NULL,
   `Nuser_state` tinyint(1) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,6 @@ CREATE TABLE `new_user` (
 -- Estructura de tabla para la tabla `permission`
 --
 
-DROP TABLE IF EXISTS `permission`;
 CREATE TABLE `permission` (
   `Per_id` int(11) NOT NULL,
   `Per_name` varchar(100) CHARACTER SET utf8 NOT NULL
@@ -160,7 +160,6 @@ CREATE TABLE `permission` (
 -- Estructura de tabla para la tabla `provider`
 --
 
-DROP TABLE IF EXISTS `provider`;
 CREATE TABLE `provider` (
   `Pro_id` int(11) NOT NULL,
   `Pro_name` varchar(100) NOT NULL,
@@ -179,7 +178,6 @@ CREATE TABLE `provider` (
 -- Estructura de tabla para la tabla `recovery_password`
 --
 
-DROP TABLE IF EXISTS `recovery_password`;
 CREATE TABLE `recovery_password` (
   `Recover_pass_id` int(11) NOT NULL,
   `User_id` int(11) NOT NULL,
@@ -194,7 +192,6 @@ CREATE TABLE `recovery_password` (
 -- Estructura de tabla para la tabla `request`
 --
 
-DROP TABLE IF EXISTS `request`;
 CREATE TABLE `request` (
   `Req_id` int(11) NOT NULL,
   `Req_subject` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -207,11 +204,17 @@ CREATE TABLE `request` (
 -- Estructura de tabla para la tabla `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `Role_id` int(11) NOT NULL,
   `Role_name` varchar(100) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `role`
+--
+
+INSERT INTO `role` (`Role_id`, `Role_name`) VALUES
+(1, 'Root');
 
 -- --------------------------------------------------------
 
@@ -219,11 +222,17 @@ CREATE TABLE `role` (
 -- Estructura de tabla para la tabla `security_group`
 --
 
-DROP TABLE IF EXISTS `security_group`;
 CREATE TABLE `security_group` (
   `Sgroup_id` int(11) NOT NULL,
   `Sgroup_name` varchar(100) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `security_group`
+--
+
+INSERT INTO `security_group` (`Sgroup_id`, `Sgroup_name`) VALUES
+(1, 'Grupo1');
 
 -- --------------------------------------------------------
 
@@ -231,7 +240,6 @@ CREATE TABLE `security_group` (
 -- Estructura de tabla para la tabla `security_gxm`
 --
 
-DROP TABLE IF EXISTS `security_gxm`;
 CREATE TABLE `security_gxm` (
   `Sgxm_id` int(11) NOT NULL,
   `Sgroup_id` int(11) NOT NULL,
@@ -244,7 +252,6 @@ CREATE TABLE `security_gxm` (
 -- Estructura de tabla para la tabla `security_gxmxa`
 --
 
-DROP TABLE IF EXISTS `security_gxmxa`;
 CREATE TABLE `security_gxmxa` (
   `Sgxmxa_id` int(11) NOT NULL,
   `Sgxm_id` int(11) NOT NULL,
@@ -257,7 +264,6 @@ CREATE TABLE `security_gxmxa` (
 -- Estructura de tabla para la tabla `security_gxmxaxp`
 --
 
-DROP TABLE IF EXISTS `security_gxmxaxp`;
 CREATE TABLE `security_gxmxaxp` (
   `Sgxmxaxp_id` int(11) NOT NULL,
   `Sgxmxa_id` int(11) NOT NULL,
@@ -270,13 +276,21 @@ CREATE TABLE `security_gxmxaxp` (
 -- Estructura de tabla para la tabla `status`
 --
 
-DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `Stat_id` int(11) NOT NULL,
   `Stat_name` varchar(30) NOT NULL,
   `Type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `status`
+--
+
+INSERT INTO `status` (`Stat_id`, `Stat_name`, `Type_id`) VALUES
+(1, 'Activo', 1),
+(2, 'Inactivo', 1),
+(3, 'Activo', 2),
+(4, 'Inactivo', 2);
 
 -- --------------------------------------------------------
 
@@ -284,12 +298,18 @@ CREATE TABLE `status` (
 -- Estructura de tabla para la tabla `status_type`
 --
 
-DROP TABLE IF EXISTS `status_type`;
 CREATE TABLE `status_type` (
   `Type_id` int(11) NOT NULL,
   `Type_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `status_type`
+--
+
+INSERT INTO `status_type` (`Type_id`, `Type_name`) VALUES
+(1, 'Usuario'),
+(2, 'General');
 
 -- --------------------------------------------------------
 
@@ -297,7 +317,6 @@ CREATE TABLE `status_type` (
 -- Estructura de tabla para la tabla `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `User_id` int(11) NOT NULL,
   `User_name` varchar(80) NOT NULL,
@@ -310,6 +329,13 @@ CREATE TABLE `user` (
   `Sgroup_id` int(11) NOT NULL,
   `Comp_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`User_id`, `User_name`, `User_identification`, `User_email`, `User_title`, `User_telephone`, `Stat_id`, `Role_id`, `Sgroup_id`, `Comp_id`) VALUES
+(1, 'Edwin Ocampo', '1030654234', 'ocampo9125@hotmail.com', 'Ingeniero de Software', '3213260498', 1, 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -429,9 +455,7 @@ ALTER TABLE `security_gxmxa`
 -- Indices de la tabla `security_gxmxaxp`
 --
 ALTER TABLE `security_gxmxaxp`
-  ADD PRIMARY KEY (`Sgxmxaxp_id`),
-  ADD KEY `Sgxmxa_id` (`Sgxmxa_id`),
-  ADD KEY `Per_id` (`Per_id`);
+  ADD PRIMARY KEY (`Sgxmxaxp_id`);
 
 --
 -- Indices de la tabla `status`
@@ -450,11 +474,7 @@ ALTER TABLE `status_type`
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`User_id`),
-  ADD KEY `user_status` (`Stat_id`),
-  ADD KEY `Role_id` (`Role_id`),
-  ADD KEY `Sgroup_id` (`Sgroup_id`),
-  ADD KEY `Comp_id` (`Comp_id`);
+  ADD PRIMARY KEY (`User_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -476,13 +496,13 @@ ALTER TABLE `application`
 -- AUTO_INCREMENT de la tabla `client`
 --
 ALTER TABLE `client`
-  MODIFY `Client_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `company`
 --
 ALTER TABLE `company`
-  MODIFY `Comp_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `events`
@@ -494,7 +514,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `Login_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `module`
@@ -536,13 +556,13 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT de la tabla `role`
 --
 ALTER TABLE `role`
-  MODIFY `Role_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `security_group`
 --
 ALTER TABLE `security_group`
-  MODIFY `Sgroup_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Sgroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `security_gxm`
@@ -566,31 +586,23 @@ ALTER TABLE `security_gxmxaxp`
 -- AUTO_INCREMENT de la tabla `status`
 --
 ALTER TABLE `status`
-  MODIFY `Stat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `status_type`
 --
 ALTER TABLE `status_type`
-  MODIFY `Type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `action`
---
-ALTER TABLE `action`
-  ADD CONSTRAINT `action_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`),
-  ADD CONSTRAINT `action_ibfk_2` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`),
-  ADD CONSTRAINT `action_ibfk_3` FOREIGN KEY (`Req_id`) REFERENCES `request` (`Req_id`);
 
 --
 -- Filtros para la tabla `application`
@@ -611,30 +623,6 @@ ALTER TABLE `events`
   ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`Client_id`) REFERENCES `client` (`Client_id`);
 
 --
--- Filtros para la tabla `login`
---
-ALTER TABLE `login`
-  ADD CONSTRAINT `user_login` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
-
---
--- Filtros para la tabla `new_user`
---
-ALTER TABLE `new_user`
-  ADD CONSTRAINT `new_user_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
-
---
--- Filtros para la tabla `provider`
---
-ALTER TABLE `provider`
-  ADD CONSTRAINT `status_provider` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`);
-
---
--- Filtros para la tabla `recovery_password`
---
-ALTER TABLE `recovery_password`
-  ADD CONSTRAINT `recovery_password_user` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
-
---
 -- Filtros para la tabla `security_gxm`
 --
 ALTER TABLE `security_gxm`
@@ -649,52 +637,19 @@ ALTER TABLE `security_gxmxa`
   ADD CONSTRAINT `security_gxmxa_ibfk_2` FOREIGN KEY (`App_id`) REFERENCES `application` (`App_id`);
 
 --
--- Filtros para la tabla `security_gxmxaxp`
---
-ALTER TABLE `security_gxmxaxp`
-  ADD CONSTRAINT `security_gxmxaxp_ibfk_1` FOREIGN KEY (`Sgxmxa_id`) REFERENCES `security_gxmxa` (`Sgxmxa_id`),
-  ADD CONSTRAINT `security_gxmxaxp_ibfk_2` FOREIGN KEY (`Per_id`) REFERENCES `permission` (`Per_id`);
-
---
 -- Filtros para la tabla `status`
 --
 ALTER TABLE `status`
   ADD CONSTRAINT `type_status` FOREIGN KEY (`Type_id`) REFERENCES `status_type` (`Type_id`);
 
+DELIMITER $$
 --
--- Filtros para la tabla `user`
+-- Eventos
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Role_id`) REFERENCES `role` (`Role_id`),
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Sgroup_id`) REFERENCES `security_group` (`Sgroup_id`),
-  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`Comp_id`) REFERENCES `company` (`Comp_id`),
-  ADD CONSTRAINT `user_status` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`);
+CREATE DEFINER=`root`@`localhost` EVENT `new_user_clean` ON SCHEDULE EVERY 1 DAY STARTS '2020-03-01 00:00:01' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM new_user WHERE TIMESTAMPDIFF(MINUTE, NOW(), DATE_ADD(Nuser_date, INTERVAL 24 HOUR)) < 0$$
 
---
--- Insert de tablas
---
-
-INSERT INTO status_type (Type_name) VALUES 
-('Usuario'),
-('General');
-
-INSERT INTO status (Stat_name, Type_id) VALUES 
-('Activo', 1),
-('Inactivo', 1),
-('Activo', 2),
-('Inactivo', 2);
-
-INSERT INTO role (Role_id, Role_name) VALUES
-(1, 'Root');
-
-INSERT INTO security_group (Sgroup_id, Sgroup_name) VALUES
-(1, 'Grupo1');
-
-INSERT INTO user (User_name, User_identification, User_email, User_title, User_telephone, Stat_id, Role_id, Sgroup_id, Comp_id) VALUES
-('Laura Grisales', '1030654234', 'lauramggarcia@hotmail.com', 'Ingeniero de Software', '3054752261', 1, 1, 1, 1);
-
-INSERT INTO login (Login_password, User_id) VALUES
-('7142c2907bd83fea0ea03e8020878e', 1);
+DELIMITER ;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
