@@ -75,7 +75,7 @@ CREATE TABLE `company` (
   `Comp_name` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Comp_address` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Comp_phone` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `company`
@@ -127,7 +127,7 @@ INSERT INTO `login` (`Login_id`, `Login_password`, `User_id`) VALUES
 CREATE TABLE `module` (
   `Mod_id` int(11) NOT NULL,
   `Mod_name` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,7 @@ CREATE TABLE `new_user` (
 CREATE TABLE `permission` (
   `Per_id` int(11) NOT NULL,
   `Per_name` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `recovery_password` (
   `Recover_pass_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Recover_pass_hash` varchar(600) NOT NULL,
   `Recover_pass_state` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -196,7 +196,7 @@ CREATE TABLE `request` (
   `Req_id` int(11) NOT NULL,
   `Req_subject` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Req_message` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,7 @@ CREATE TABLE `request` (
 CREATE TABLE `role` (
   `Role_id` int(11) NOT NULL,
   `Role_name` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `role`
@@ -225,7 +225,7 @@ INSERT INTO `role` (`Role_id`, `Role_name`) VALUES
 CREATE TABLE `security_group` (
   `Sgroup_id` int(11) NOT NULL,
   `Sgroup_name` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `security_group`
@@ -244,7 +244,7 @@ CREATE TABLE `security_gxm` (
   `Sgxm_id` int(11) NOT NULL,
   `Sgroup_id` int(11) NOT NULL,
   `Mod_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -256,7 +256,7 @@ CREATE TABLE `security_gxmxa` (
   `Sgxmxa_id` int(11) NOT NULL,
   `Sgxm_id` int(11) NOT NULL,
   `App_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,7 @@ CREATE TABLE `security_gxmxaxp` (
   `Sgxmxaxp_id` int(11) NOT NULL,
   `Sgxmxa_id` int(11) NOT NULL,
   `Per_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -340,15 +340,6 @@ INSERT INTO `user` (`User_id`, `User_name`, `User_identification`, `User_email`,
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `action`
---
-ALTER TABLE `action`
-  ADD PRIMARY KEY (`Act_id`),
-  ADD KEY `User_id` (`User_id`),
-  ADD KEY `Stat_id` (`Stat_id`),
-  ADD KEY `Req_id` (`Req_id`);
 
 --
 -- Indices de la tabla `application`
@@ -475,16 +466,6 @@ ALTER TABLE `status_type`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`User_id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `action`
---
-ALTER TABLE `action`
-  MODIFY `Act_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `application`
@@ -623,6 +604,30 @@ ALTER TABLE `events`
   ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`Client_id`) REFERENCES `client` (`Client_id`);
 
 --
+-- Filtros para la tabla `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `user_login` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
+
+--
+-- Filtros para la tabla `new_user`
+--
+ALTER TABLE `new_user`
+  ADD CONSTRAINT `new_user_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
+
+--
+-- Filtros para la tabla `provider`
+--
+ALTER TABLE `provider`
+  ADD CONSTRAINT `status_provider` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`);
+
+--
+-- Filtros para la tabla `recovery_password`
+--
+ALTER TABLE `recovery_password`
+  ADD CONSTRAINT `recovery_password_user` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
+
+--
 -- Filtros para la tabla `security_gxm`
 --
 ALTER TABLE `security_gxm`
@@ -637,10 +642,26 @@ ALTER TABLE `security_gxmxa`
   ADD CONSTRAINT `security_gxmxa_ibfk_2` FOREIGN KEY (`App_id`) REFERENCES `application` (`App_id`);
 
 --
+-- Filtros para la tabla `security_gxmxaxp`
+--
+ALTER TABLE `security_gxmxaxp`
+  ADD CONSTRAINT `security_gxmxaxp_ibfk_1` FOREIGN KEY (`Sgxmxa_id`) REFERENCES `security_gxmxa` (`Sgxmxa_id`),
+  ADD CONSTRAINT `security_gxmxaxp_ibfk_2` FOREIGN KEY (`Per_id`) REFERENCES `permission` (`Per_id`);
+
+--
 -- Filtros para la tabla `status`
 --
 ALTER TABLE `status`
   ADD CONSTRAINT `type_status` FOREIGN KEY (`Type_id`) REFERENCES `status_type` (`Type_id`);
+
+--
+-- Filtros para la tabla `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Role_id`) REFERENCES `role` (`Role_id`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Sgroup_id`) REFERENCES `security_group` (`Sgroup_id`),
+  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`Comp_id`) REFERENCES `company` (`Comp_id`),
+  ADD CONSTRAINT `user_status` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`);
 
 DELIMITER $$
 --
