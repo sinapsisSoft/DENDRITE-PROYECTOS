@@ -43,7 +43,7 @@ if (!isset($_SESSION['User'])) {
 
 <body id="page-top">
   <!-- <div class="loadPage" id="loadPage"></div> -->
-  
+
   <!--Alert-->
   <div id="myAlert"></div>
   <!--Alert-->
@@ -68,31 +68,258 @@ if (!isset($_SESSION['User'])) {
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Panel Administrativo</h1>
+          <h1 class="h3 mb-2 text-gray-800">Cotizador</h1>
 
 
-          <!-- DataTales Example -->
-       <table class="table table-hover" data-order="[[ 1, &quot;desc&quot; ]]" data-page-length="25" id="tableExequial" width="100%" cellspacing="0"><thead class="text-wine">
-         <tr>
-         <th>PERFIL</th>
-         <th>VALOR </th>
-         <th>HORA L </th>
-        </tr><tr><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput0" onkeyup="searchTable('tableExequial',0,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput1" onkeyup="searchTable('tableExequial',1,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput2" onkeyup="searchTable('tableExequial',2,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <tr><td>Desarrollador</td><td>$ 25.000</td>
-        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
-        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
-        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
-        <td><i class="material-icons modified"></i></td>
+          <!-- SINAPSIS -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">SINAPSIS</h6>
+              <!-- <ul class="nav nav-pills card-header-pills">               -->
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                  <thead class="text-wine">
+                    <tr>
+                      <th>% SINAPSIS</th>
+                      <th>M% COMISIÒN</th>
+                      <th>OPTIMISTA (HORA) </th>
+                      <th>% + DÌAS</th>
+                      <th>C-PERFILES</th>
+                      <th>IMPROVISTOS</th>
+                  <tbody>
+                    <tr>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="40%"> </td>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="15%"></td>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="5%"></td>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="10%"></td>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="5%"></td>
+                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="40%"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </form>
+            </div>
+          </div>
+          <!-- SINAPSIS -->
 
-        <tr><td>Desarrollador II </td><td>$ 35.000</td>
-        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
-        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
-        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
-        <td><i class="material-icons modified"></i></td>
-      
+          <!-- HOSTING -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              </ul>
+            </div>
+            <div class="card-body" style="text-align: right;">
+              <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
+              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
+              <form id="form_plan" class="text-left " action="#!" onsubmit="sendData(this.id,event,0);return false">
+                <div class="table-responsive">
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th style="width: 20%;">HOSTING</th>
+                        <th style="width: 11%;">SSL</th>
+                        <th style="width: 11%;">DOMINIO </th>
+                        <th style="width: 11%;">CORREO</th>                     
+                    <tbody>
+                      <tr>
+                        <td style="width: 11%;">
+                          <div class="form-group ">
+                            <select class="form-control">
+                              <option>Hosting Sencillo</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 11%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>SSL</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 11%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>net</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 11%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>3</option>
+                            </select>
+                          </div>
+                        </td>                     
+                        <td style="width: 11%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>Enterprise</option>
+                            </select>
+                          </div>  
+                          </td>   
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>                  
+                      </tr>
+                    </tbody>                   
+                  </table>
+                 
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- HOSTING -->
+
+
+          <!-- PROFILE -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">PERFIL</h6>
+              <!-- <ul class="nav nav-pills card-header-pills">               -->
+              </ul>
+            </div>
+            <div class="card-body" style="text-align: right;">
+              <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
+              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
+              <form id="form_plan" class="text-left">
+                <div class="table-responsive">
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th>PERFIL</th>
+                        <th>VALOR</th>
+                        <th>DÍAS L </th>
+                        <th>HORA L </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="width: 40%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>Desarrollador I</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="7"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="4"></td>
+                        <td style="width: 20%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- PROFILE-->
+
+          <!-- EXERCISE-->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">ACTIVIDAD</h6>
+              <!-- <ul class="nav nav-pills card-header-pills">               -->
+              </ul>
+            </div>
+            <div class="card-body" style="text-align: right;">
+              <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
+              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
+              <form id="form_plan" class="text-left  was-validated" action="#!" onsubmit="sendData(this.id,event,0);return false">
+                <div class="table-responsive">
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th style="width: 10%;">ACTIVIDAD</th>
+                        <th style="width: 10%;">MÁS PROBABLE (HORA)</th>
+                        <th style="width: 10%;">OPTIMISTA (HORA) </th>
+                        <th style="width: 10%;">PESIMISTA (HORA)</th>
+                        <th style="width: 10%;">ESPERADA (HORA)</th>
+                    <tbody>
+                      <tr>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="CRUD"> </td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="7"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="4"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="5"></td>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-responsive">
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th style="width: 13%;">VALOR NETO </th>
+                        <th style="width: 13%;">VALOR COMISIÓN (HORA)</th>
+                        <th style="width: 13%;">VALOR ADMNISTRATIVO</th>
+                        <th style="width: 13%;">VALOR TOTAL</th>
+                    <tbody>
+                      <tr>
+                        <td style="width: 13%;"><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
+                        <td style="width: 13%;"><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
+                        <td style="width: 13%;"><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
+                        <td style="width: 13%;"><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
+                        <td>
+                          <div>
+                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                          </div>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </div>
+          </div>
+       <!-- EXERCISE-->
+
+
+          <!-- SERVICES-->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">SERVICIOS</h6>
+              <!-- <ul class="nav nav-pills card-header-pills">               -->
+              </ul>
+            </div>
+            <div class="card-header py-3">
+              </ul>
+            </div>
+            <div class="card-body" style="text-align: right;">
+              <form id="form_plan" class="text-left " action="#!" onsubmit="sendData(this.id,event,0);return false">
+                <div class="table-responsive">
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th>SERVICIOS</th>
+                        <th>TOTAL</th>
+                        <th style="color: red;" >PRECIO TOTAL</th>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>OPERATIVO</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td><input type="text" class="form-control" required="" readonly="" value="$147.000"></td>
+                        <td><input type="text" class="form-control " required="" readonly="" value="$2.000.000"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+              <button class="btn btn-primary" type="submit" value="Submit" form="">Guardar</button>
+              <a href="../home/home.php" class="btn btn-secondary">Volver</a>
+            </div>
+          </div>
+               <!-- SERVICES-->
+        </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -153,7 +380,7 @@ if (!isset($_SESSION['User'])) {
         <div class="modal-body">
           <div class="col-md-12">
             <form id="form_users" class="text-left  was-validated" action="#!" onsubmit="confirmPass();return false">
-            <input type="number" id="User_id" style="visibility:hidden">
+              <input type="number" id="User_id" style="visibility:hidden">
               <div class="form-row mb-1">
                 <div class="col-md-3 mb-1">
                   <!-- Documento -->
@@ -195,7 +422,7 @@ if (!isset($_SESSION['User'])) {
                 <div class="col-md-3 mb-1 password">
                   <!-- Contraseña -->
                   <label class="bmd-label-floating"> Contraseña</label>
-                  <input type="password" pattern=".{6,}"id="Login_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Contraseña" required>
+                  <input type="password" pattern=".{6,}" id="Login_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Contraseña" required>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Proporcione una contraseña válida.</div>
                 </div>
@@ -211,9 +438,9 @@ if (!isset($_SESSION['User'])) {
                       </div>
                     </div>
                     <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione una confirme contraseña válida.</div>
+                    <div class="invalid-feedback">Proporcione una confirme contraseña válida.</div>
                   </div>
-                 
+
                 </div>
                 <div class="col-md-2 mb-1">
                   <!-- Estado -->
@@ -229,8 +456,8 @@ if (!isset($_SESSION['User'])) {
                   <!-- Rol -->
                   <label class="bmd-label-floating"> Rol</label>
                   <select id="Role_id" class="custom-select custom-select-sm" required>
-                  <option disabled selected value> -- Seleccione una opción -- </option>
-              
+                    <option disabled selected value> -- Seleccione una opción -- </option>
+
                   </select>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Seleccione una opción válido.</div>
@@ -239,8 +466,8 @@ if (!isset($_SESSION['User'])) {
                   <!-- Grupo de seguridad -->
                   <label class="bmd-label-floating"> Grupo de seguridad</label>
                   <select id="Sgroup_id" class="custom-select custom-select-sm" required>
-                  <option disabled selected value> -- Seleccione una opción -- </option>
-               
+                    <option disabled selected value> -- Seleccione una opción -- </option>
+
                   </select>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Seleccione una opción válido.</div>
@@ -285,7 +512,7 @@ if (!isset($_SESSION['User'])) {
   <script src="../../js/table-filter.js"></script>
   <script src="../../js/table.js"></script>
   <script src="../../js/selectList.js"></script>
-  <script src="../../js/properties.js"></script> 
+  <script src="../../js/properties.js"></script>
 
 
 

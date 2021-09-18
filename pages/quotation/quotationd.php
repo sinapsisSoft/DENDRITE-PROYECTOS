@@ -72,53 +72,27 @@ if (!isset($_SESSION['User'])) {
 
 
           <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Agregar nuevo proyecto</h6>
-              <ul class="nav nav-pills card-header-pills">
-                <!-- <li class="nav-item">
-                  <div class=" ml-4">
-                    <button class="btn btn-secondary" data-toggle="modal" data-target="#userModal" onclick="clearForm('form_users', 1);passwordDataForm(1);"><i style="font-size: 2.1rem;" class="material-icons">person_add</i></button>
-                  </div>
-                </li> -->
-              </ul>
-            </div>
-           
-            <div class="card-body">
-            <form id="form_plan" class="text-left  was-validated" action="#!" onsubmit="sendData(this.id,event,0);return false">
-                <div class="row">
-                <input type="hidden" id="Plan_id" value="1">
-                  <input type="hidden" id="App_id" value="1">
-                  <div class="form-group col-xl-6 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                    <label for="Plan_name">Nombre</label>
-                    <input type="text" class="form-control" id="Plan_name" required="" readonly="">
-                  </div>
-                  <div class="form-group col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <label for="Plan_initialDate">Fecha inicial</label>
-                    <input type="date" class="form-control" id="Plan_initialDate" required="">
-                  </div>
-                  <div class="form-group col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <label for="Plan_finalDate">Fecha final</label>
-                    <input type="date" class="form-control" id="Plan_finalDate" required="">
-                  </div>
-                  <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="Plan_description">Descripción</label>
-                    <input type="text" class="form-control" id="Plan_description">
-                  </div>
-                </div>
-                <div class="row justify-content-end">
-                  <div class="col-md-2" style="text-align: right;">
-                    <a href="../home/home.php" class="btn btn-secondary">Volver</a>
-                  </div>
-                  <div class="col-md-2" style="text-align: right;">
-                    <button class="btn btn-primary" type="submit" value="Submit" form="form_plan">Guardar</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+       <table class="table table-hover" data-order="[[ 1, &quot;desc&quot; ]]" data-page-length="25" id="tableExequial" width="100%" cellspacing="0"><thead class="text-wine">
+         <tr>
+         <th>PERFIL</th>
+         <th>VALOR </th>
+         <th>HORA L </th>
+        </tr><tr><th>
+        <input type="text" class="form-control bg-light border-0 small" id="myInput0" onkeyup="searchTable('tableExequial',0,'myInput')" placeholder="Search.." title="Search"></th><th>
+        <input type="text" class="form-control bg-light border-0 small" id="myInput1" onkeyup="searchTable('tableExequial',1,'myInput')" placeholder="Search.." title="Search"></th><th>
+        <input type="text" class="form-control bg-light border-0 small" id="myInput2" onkeyup="searchTable('tableExequial',2,'myInput')" placeholder="Search.." title="Search"></th><th>
+        <tr><td>Desarrollador</td><td>$ 25.000</td>
+        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
+        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
+        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
+        <td><i class="material-icons modified"></i></td>
 
-        </div>
+        <tr><td>Desarrollador II </td><td>$ 35.000</td>
+        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
+        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
+        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
+        <td><i class="material-icons modified"></i></td>
+      
         <!-- /.container-fluid -->
 
       </div>
