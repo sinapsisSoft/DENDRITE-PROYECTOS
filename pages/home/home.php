@@ -95,7 +95,7 @@ if (!isset($_SESSION['User'])) {
                     <div class="col mr-2">
                       <div class="text font-weight-bold text-warning text-uppercase mb-1">PROYECTOS <i class="fas fa-user-cog"></i></div>
                       <ul>                        
-                        <li><a href="."><span>Nuevo Proyecto</span></a></li>                      
+                        <li><a href="../quotation/Project3.php\"><span>Nuevo Proyecto</span></a></li>                      
                       </ul>
                     </div>
                   </div>
@@ -109,7 +109,7 @@ if (!isset($_SESSION['User'])) {
                     <div class="col mr-2">
                       <div class="text font-weight-bold text-secondary text-uppercase mb-1">COTIZADOR <i class="fas fa-coins"></i></div>
                       <ul>
-                        <li><a href="../user/user.php"><span>Cotizar</span></a></li>
+                        <li><a href="../quotation/quotation.php"><span>COTIZADOR SINAPSIS</span></a></li>
                       </ul>
                     </div>
                   </div>

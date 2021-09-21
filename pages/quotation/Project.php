@@ -73,7 +73,7 @@ if (!isset($_SESSION['User'])) {
           <!-- VERSION -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Versiones</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Número de cotización</h6>
             </div>
             <div class="card-body" style="text-align: right;">
               <form id="form_plan" class="text-left form-inline">
@@ -91,91 +91,10 @@ if (!isset($_SESSION['User'])) {
           </div>
           <!-- VERSION -->
 
-          <!-- SINAPSIS -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">SINAPSIS</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
-                  <thead class="text-wine">
-                    <tr>
-                      <th>% SINAPSIS</th>
-                      <th>M% COMISIÒN</th>
-                      <th>OPTIMISTA (HORA) </th>
-                      <th>% + DÌAS</th>
-                      <th>C-PERFILES</th>
-                      <th>IMPROVISTOS</th>
-                  <tbody>
-                    <tr>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="40%"> </td>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="15%"></td>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="5%"></td>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="10%"></td>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="5%"></td>
-                      <td style="width: 17%;"><input type="text" class="form-control" required="" readonly="" value="40%"></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
-                  <thead class="text-wine">
-                    <tr>
-                      <th>HOSTING</th>
-                      <th>SSL</th>
-                      <th>DOMINIO </th>
-                      <th colspan="2" class="text-center">CORREO</th>
-                  <tbody>
-                    <tr>
-                      <td style="width: 11%;">
-                        <div class="form-group ">
-                          <select class="form-control">
-                            <option>Hosting Sencillo</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td style="width: 11%;">
-                        <div class="form-group">
-                          <select class="form-control">
-                            <option>SSL</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td style="width: 11%;">
-                        <div class="form-group">
-                          <select class="form-control">
-                            <option>net</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td style="width: 11%;">
-                        <div class="form-group">
-                          <select class="form-control">
-                            <option>3</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td style="width: 11%;">
-                        <div class="form-group">
-                          <select class="form-control">
-                            <option>Enterprise</option>
-                          </select>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              </form>
-            </div>
-          </div>
-          <!-- SINAPSIS -->
-
-
           <!-- PROFILE -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">PERFIL</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Nombre del proyecto</h6>
               <!-- <ul class="nav nav-pills card-header-pills">               -->
               </ul>
             </div>
@@ -187,10 +106,11 @@ if (!isset($_SESSION['User'])) {
                   <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
                     <thead class="text-wine">
                       <tr>
-                        <th>PERFIL</th>
-                        <th>VALOR</th>
-                        <th>DÍAS L </th>
-                        <th>HORA L </th>
+                        <th>Nombre</th>
+                        <th>Actividades</th>
+                        <th>Tiempo estimado</th>
+                        <th>Prioridad</th>
+                        <th>Estado</th>
                         <th>ELIMINAR </th>
                       </tr>
                     </thead>
@@ -233,101 +153,65 @@ if (!isset($_SESSION['User'])) {
           </div>
           <!-- PROFILE-->
 
-          <!-- EXERCISE-->
-          <div class="card shadow mb-4">
+    <!-- PROFILE -->
+    <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ACTIVIDAD</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Nombre del proyecto</h6>
               <!-- <ul class="nav nav-pills card-header-pills">               -->
               </ul>
             </div>
             <div class="card-body" style="text-align: right;">
               <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
               margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
-              <form id="form_plan" class="text-left" action="#!" onsubmit="sendData(this.id,event,0);return false">
-                <div class="table-responsive-md">
-                  <table class="table table-sm" style="font-size: 0.75rem;" data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
-                    <thead class="text-wine">
-                      <tr>
-                        <th>ACTIVIDAD</th>
-                        <th style="width: 7%;">MÁS PROBABLE</th>
-                        <th style="width: 7%;">OPTIMISTA </th>
-                        <th style="width: 7%;">PESIMISTA</th>
-                        <th style="width: 7%;">ESPERADA</th>
-                        <th style="width: 130px;">VALOR NETO </th>
-                        <th style="width: 130px;">VALOR COMISIÓN</th>
-                        <th style="width: 130px;" class="text-wrap">VALOR ADMIN.</th>
-                        <th style="width: 130px;">VALOR TOTAL</th>
-                        <th style="width: 7%;">ELIMINAR</th>
-                    <tbody>
-                      <tr>
-                        <td><input type="text" class="form-control" required="" value="CRUD"> </td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
-                        <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><input type="text" class="form-control" required="" value="Calculadora ATS/IDSA"> </td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
-                        <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><input type="text" class="form-control" required="" value="Ajustes Generales"> </td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
-                        <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
-                        <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr class="table-danger">
-                        <th colspan="4"><label>TOTALES</label></th>
-                        <th><input type="text" class="form-control" required="" readonly="" value="5"></th>
-                        <th><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></th>
-                        <th><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></th>
-                        <th><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></th>
-                        <th><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
+              <form id="form_plan" class="text-left">
                 <div class="table-responsive">
                   <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
                     <thead class="text-wine">
                       <tr>
-
+                        <th>Nombre</th>
+                        <th>Actividades</th>
+                        <th>Tiempo estimado</th>
+                        <th>Prioridad</th>
+                        <th>Estado</th>
+                        <th>Eliminar </th>
+                      </tr>
+                    </thead>
                     <tbody>
                       <tr>
-
+                        <td style="width: 40%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>Desarrollador I</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="$12.450"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="4"></td>
+                        <td style="width: 20%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 40%;">
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option>Desarrollador II</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="$20.00"></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="3"></td>
+                        <td style="width: 20%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>
+                        <td>
+                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -335,8 +219,7 @@ if (!isset($_SESSION['User'])) {
               </form>
             </div>
           </div>
-          <!-- EXERCISE-->
-
+          <!-- PROFILE-->
 
           <!-- SERVICES-->
           <div class="card shadow mb-4">

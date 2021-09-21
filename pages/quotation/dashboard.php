@@ -43,7 +43,7 @@ if (!isset($_SESSION['User'])) {
 
 <body id="page-top">
   <!-- <div class="loadPage" id="loadPage"></div> -->
-  
+
   <!--Alert-->
   <div id="myAlert"></div>
   <!--Alert-->
@@ -72,27 +72,54 @@ if (!isset($_SESSION['User'])) {
 
 
           <!-- DataTales Example -->
-       <table class="table table-hover" data-order="[[ 1, &quot;desc&quot; ]]" data-page-length="25" id="tableExequial" width="100%" cellspacing="0"><thead class="text-wine">
-         <tr>
-         <th>PERFIL</th>
-         <th>VALOR </th>
-         <th>HORA L </th>
-        </tr><tr><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput0" onkeyup="searchTable('tableExequial',0,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput1" onkeyup="searchTable('tableExequial',1,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <input type="text" class="form-control bg-light border-0 small" id="myInput2" onkeyup="searchTable('tableExequial',2,'myInput')" placeholder="Search.." title="Search"></th><th>
-        <tr><td>Desarrollador</td><td>$ 25.000</td>
-        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
-        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
-        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
-        <td><i class="material-icons modified"></i></td>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
+            </div>
+            <div class=" mx-auto col-md-6 align-self-center">
+              <form class="navbar-form" id="formSearchUsers">
+                <div class="input-group ">
+                  <input type="text" value="" class="form-control bg-light border-0 small" placeholder="Cotización a buscar">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search fa-sm"></i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableQuotations" width="100%" cellspacing="0">
+                  <thead class="text-wine">
+                    <tr>
+                      <th>Número Cotización</th>
+                      <th>Valor total</th>
+                      <th>Días laborales</th>
+                      <th>Estado</th>
+                      <th>Revisar</th>
+                    </tr>
+                    <tr>
+                      <th><input type="text" class="form-control bg-light border-0 small" id="myInput0" onkeyup="searchTable('tableQuotations',0,'myInput')" placeholder="Search.." title="Search"></th>
+                      <th><input type="text" class="form-control bg-light border-0 small" id="myInput1" onkeyup="searchTable('tableQuotations',1,'myInput')" placeholder="Search.." title="Search"></th>
+                      <th><input type="text" class="form-control bg-light border-0 small" id="myInput2" onkeyup="searchTable('tableQuotations',2,'myInput')" placeholder="Search.." title="Search"></th>
+                      <th><input type="text" class="form-control bg-light border-0 small" id="myInput4" onkeyup="searchTable('tableQuotations',4,'myInput')" placeholder="Search.." title="Search"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1020</td>
+                      <td>2.350.000</td>
+                      <td>25</td>
+                      <td>Activo</td>
+                      <td><button href="../home/home.php" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">visibility</i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
-        <tr><td>Desarrollador II </td><td>$ 35.000</td>
-        <td><input type="time" id="Res_hour" class="form-control form-control-sm"></td>
-        <td><a href="exequialBeneficiary.php?User_id=1" class="btn btn-warning" style="margin:0; padding:5px" value=""><i class="material-icons">border_color</i></a></td>
-        <td><a href="" class="btn btn-danger" style="margin:0; padding:5px" value="" onclick="getDataChangeState(8,1,9);return false;"><i class="material-icons">delete_outline</i></a></td>
-        <td><i class="material-icons modified"></i></td>
-      
+        </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -153,7 +180,7 @@ if (!isset($_SESSION['User'])) {
         <div class="modal-body">
           <div class="col-md-12">
             <form id="form_users" class="text-left  was-validated" action="#!" onsubmit="confirmPass();return false">
-            <input type="number" id="User_id" style="visibility:hidden">
+              <input type="number" id="User_id" style="visibility:hidden">
               <div class="form-row mb-1">
                 <div class="col-md-3 mb-1">
                   <!-- Documento -->
@@ -195,7 +222,7 @@ if (!isset($_SESSION['User'])) {
                 <div class="col-md-3 mb-1 password">
                   <!-- Contraseña -->
                   <label class="bmd-label-floating"> Contraseña</label>
-                  <input type="password" pattern=".{6,}"id="Login_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Contraseña" required>
+                  <input type="password" pattern=".{6,}" id="Login_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Contraseña" required>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Proporcione una contraseña válida.</div>
                 </div>
@@ -211,9 +238,9 @@ if (!isset($_SESSION['User'])) {
                       </div>
                     </div>
                     <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione una confirme contraseña válida.</div>
+                    <div class="invalid-feedback">Proporcione una confirme contraseña válida.</div>
                   </div>
-                 
+
                 </div>
                 <div class="col-md-2 mb-1">
                   <!-- Estado -->
@@ -229,8 +256,8 @@ if (!isset($_SESSION['User'])) {
                   <!-- Rol -->
                   <label class="bmd-label-floating"> Rol</label>
                   <select id="Role_id" class="custom-select custom-select-sm" required>
-                  <option disabled selected value> -- Seleccione una opción -- </option>
-              
+                    <option disabled selected value> -- Seleccione una opción -- </option>
+
                   </select>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Seleccione una opción válido.</div>
@@ -239,8 +266,8 @@ if (!isset($_SESSION['User'])) {
                   <!-- Grupo de seguridad -->
                   <label class="bmd-label-floating"> Grupo de seguridad</label>
                   <select id="Sgroup_id" class="custom-select custom-select-sm" required>
-                  <option disabled selected value> -- Seleccione una opción -- </option>
-               
+                    <option disabled selected value> -- Seleccione una opción -- </option>
+
                   </select>
                   <div class="valid-feedback">Ok!</div>
                   <div class="invalid-feedback">Seleccione una opción válido.</div>
@@ -285,7 +312,7 @@ if (!isset($_SESSION['User'])) {
   <script src="../../js/table-filter.js"></script>
   <script src="../../js/table.js"></script>
   <script src="../../js/selectList.js"></script>
-  <script src="../../js/properties.js"></script> 
+  <script src="../../js/properties.js"></script>
 
 
 
