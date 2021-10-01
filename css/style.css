@@ -189,3 +189,9 @@ a{
   color: #ffc50d;;
   transition: 1s;
 }
+
+.estado {
+  color: #fff;
+  background-color: #f6c23e;
+  border-color: #f6c23e;
+}
