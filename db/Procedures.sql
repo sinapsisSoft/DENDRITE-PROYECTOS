@@ -298,6 +298,24 @@ BEGIN
 END$$
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_quotation_select_date$$
+CREATE PROCEDURE sp_quotation_select_date(IN iniDate DATE, IN finDate DATE)
+BEGIN  
+IF iniDate = 0000-00-00 THEN
+  SELECT Quo_id, CONCAT(Quo_prefix, Quo_number) AS Quo_number, (SELECT COUNT(Quo_parentNumber)+1 FROM quotation WHERE Quo_parentNumber = Q.Quo_id GROUP BY Quo_parentNumber) AS Quo_version, Quo_hours, S.Stat_name FROM quotation Q
+  INNER JOIN status S ON Q.Stat_id = S.Stat_id
+  WHERE Quo_parentNumber IS NULL
+  ORDER BY Quo_date DESC;
+ELSE 
+	SELECT Quo_id, CONCAT(Quo_prefix, Quo_number) AS Quo_number, (SELECT COUNT(Quo_parentNumber)+1 FROM quotation WHERE Quo_parentNumber = Q.Quo_id GROUP BY Quo_parentNumber) AS Quo_version, Quo_hours, S.Stat_name FROM quotation Q
+  INNER JOIN status S ON Q.Stat_id = S.Stat_id
+  WHERE (Quo_date >= iniDate AND Quo_date <= finDate) AND Quo_parentNumber IS NULL
+  ORDER BY Quo_date DESC;	
+END IF;
+END$$
+DELIMITER ;
+
 /*
 Author: DIEGO CASALLAS
 Date: 24/05/2020

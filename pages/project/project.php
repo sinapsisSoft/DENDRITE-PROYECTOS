@@ -85,17 +85,19 @@ if (!isset($_SESSION['User'])) {
                     <thead class="text-wine">
                       <tr>
                         <th>N°cotización</th>
-                        <th>Nombre proyecto</th>
-                        <th>Versión</th>
-                        <th>Cliente</th>
-                        <th></th>
+                        <th>Versión</th>                      
                         <th>Horas estimada</th>
                       </tr>
-                    </thead>
+                    </thead>                   
                     <tbody>
                       <tr>
                         <td style="width: 10%;"><input type="text" class="form-control" required="" value="001"> </td>
-                        <td style="width: 30%;"><input type="text" class="form-control" required="" value="FORMULARIOS WEB"> </td>
+                        <td>
+                          </button>
+                          <button type="submit" class="btn btn-primary" onclick="">
+                            <i class="fas fa-search fa-sm"></i>
+                        </td>
+                        
                         <td style="width: 10%;">
                           <div class="form-group ">
                             <select class="form-control">
@@ -104,26 +106,24 @@ if (!isset($_SESSION['User'])) {
                               <option>3</option>
                             </select>
                           </div>
-                        <td style="width: 20%;">
-                          <div class="form-group ">
-                            <select class="form-control">
-                              <option selected>-- Seleccione una opción --</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                            </select>
-                          </div>
-                        <td>
-                          </button>
-                          <button type="submit" class="btn btn-primary" onclick="">
-                            <i class="fas fa-search fa-sm"></i>
-                        </td>
-                        </td>
-                        <td style="width: 20%;">
-                          <label for="floatingTextarea2">1200</label>
-                        </td>
+                        </td>                     
                       </tr>
                     </tbody>
+                  </table>
+
+                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
+                    <thead class="text-wine">
+                      <tr>
+                        <th>Nombe proyecto</th>
+                        <th>Cliente</th>
+                      </tr>
+                    </thead>                   
+                    <tbody>
+                      <tr>
+                        <td style="width: 60%;"><input type="text" class="form-control" required="" value="Formularios"> </td>
+                        <td style="width: 40%;"><input type="text" class="form-control" required="" value="Clinica pepe"> </td>                      
+                      </tr>
+                    </tbody>                    
                   </table>
                 </div>
               </form>

@@ -87,6 +87,54 @@ INSERT INTO `company` (`Comp_id`, `Comp_identification`, `Comp_name`, `Comp_addr
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `domain_service`
+--
+
+CREATE TABLE `domain_service` (
+  `Domain_id` int(11) NOT NULL,
+  `Domain_name` varchar(100) NOT NULL,
+  `Domain_number` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `domain_service`
+--
+
+INSERT INTO `domain_service` (`Domain_id`, `Domain_name`, `Domain_number`) VALUES
+(1, 'co', '2'),
+(2, 'com', '1'),
+(3, 'com.co', '1.5'),
+(4, 'online', '1'),
+(5, 'net', '1'),
+(6, 'tech', '1'),
+(7, 'org', '1.3'),
+(8, 'store', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `email_service`
+--
+
+CREATE TABLE `email_service` (
+  `Email_id` int(11) NOT NULL,
+  `Email_name` varchar(100) NOT NULL,
+  `Email_number` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `email_service`
+--
+
+INSERT INTO `email_service` (`Email_id`, `Email_name`, `Email_number`) VALUES
+(1, 'Sencillo', '2'),
+(2, 'Business', '2.3'),
+(3, 'Enterprise', '3');
+
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `events`
 --
 
@@ -98,6 +146,30 @@ CREATE TABLE `events` (
   `Event_end` datetime DEFAULT NULL,
   `Client_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `host_service`
+--
+
+CREATE TABLE `host_service` (
+  `Host_id` int(11) NOT NULL,
+  `Host_name` varchar(100) NOT NULL,
+  `Host_number` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `host_service`
+--
+
+INSERT INTO `host_service` (`Host_id`, `Host_name`, `Host_number`) VALUES
+(1, 'Hosting Sencillo', '3'),
+(2, 'Hosting Premium', '6'),
+(3, 'Hosting Empresarial', '12'),
+(4, 'Cloud Startup', '18'),
+(5, 'Cloud Professional', '25'),
+(6, 'Cloud Global', '70');
 
 -- --------------------------------------------------------
 
@@ -170,6 +242,47 @@ CREATE TABLE `provider` (
   `Pro_contactEmail` varchar(320) NOT NULL,
   `Pro_attach` blob DEFAULT NULL,
   `Stat_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `quotation`
+--
+
+CREATE TABLE `quotation` (
+  `Quo_id` int(11) NOT NULL,
+  `Quo_prefix` varchar(10) NOT NULL,
+  `Quo_number` varchar(11) NOT NULL,
+  `Quo_parentNumber` int(11) NULL,
+  `Quo_date` date NOT NULL,
+  `Quo_trm` varchar(10) NOT NULL,
+  `Quo_percCompany` int(11) NOT NULL,
+  `Quo_percCommission` int(11) NOT NULL,
+  `Quo_hours` varchar(5) NOT NULL,
+  `Quo_days` varchar(3) NOT NULL,
+  `Quo_unexpected` int(11) NOT NULL,
+  `Host_id` int(11) NULL,
+  `Quo_hostMonths` varchar(3) DEFAULT NULL,
+  `Ssl_id` int(11) NULL,
+  `Quo_sslMonths` varchar(3) DEFAULT NULL,
+  `Domain_id` int(11) NULL,
+  `Quo_domainMonths` varchar(3) DEFAULT NULL,
+  `Email_id` int(11) NULL,
+  `Quo_emailNum` varchar(3) DEFAULT NULL,
+  `Quo_emailMonths` varchar(3) DEFAULT NULL,
+  `Stat_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `quotation_task` (
+  `Quot_id` int(11) NOT NULL,
+  `Quo_id` int(11) NOT NULL,
+  `Prof_id` int(11) NOT NULL,
+  `Quot_salary` varchar(10) DEFAULT NULL,
+  `Quot_days` varchar(2) DEFAULT NULL,
+  `Quot_hours` varchar(2) DEFAULT NULL,
+  `Quot_task` varchar(30) DEFAULT NULL,
+  `Quot_opHour` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -273,6 +386,25 @@ CREATE TABLE `security_gxmxaxp` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ssl_service`
+--
+
+CREATE TABLE `ssl_service` (
+  `Ssl_id` int(11) NOT NULL,
+  `Ssl_name` varchar(100) NOT NULL,
+  `Ssl_number` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ssl_service`
+--
+
+INSERT INTO `ssl_service` (`Ssl_id`, `Ssl_name`, `Ssl_number`) VALUES
+(1, 'SSL', '3');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `status`
 --
 
@@ -290,7 +422,9 @@ INSERT INTO `status` (`Stat_id`, `Stat_name`, `Type_id`) VALUES
 (1, 'Activo', 1),
 (2, 'Inactivo', 1),
 (3, 'Activo', 2),
-(4, 'Inactivo', 2);
+(4, 'Inactivo', 2)
+(5, 'Cotizado', 3),
+(6, 'Aprobado', 3);
 
 -- --------------------------------------------------------
 
@@ -309,7 +443,8 @@ CREATE TABLE `status_type` (
 
 INSERT INTO `status_type` (`Type_id`, `Type_name`) VALUES
 (1, 'Usuario'),
-(2, 'General');
+(2, 'General'),
+(3, 'Cotización');
 
 -- --------------------------------------------------------
 
@@ -362,11 +497,29 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`Comp_id`);
 
 --
+-- Indices de la tabla `domain_service`
+--
+ALTER TABLE `domain_service`
+  ADD PRIMARY KEY (`Domain_id`);
+
+--
+-- Indices de la tabla `email_service`
+--
+ALTER TABLE `email_service`
+  ADD PRIMARY KEY (`Email_id`);
+
+--
 -- Indices de la tabla `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`Event_id`),
   ADD KEY `Client_id` (`Client_id`);
+
+--
+-- Indices de la tabla `host_service`
+--
+ALTER TABLE `host_service`
+  ADD PRIMARY KEY (`Host_id`);
 
 --
 -- Indices de la tabla `login`
@@ -400,6 +553,26 @@ ALTER TABLE `permission`
 ALTER TABLE `provider`
   ADD PRIMARY KEY (`Pro_id`),
   ADD KEY `status_provider` (`Stat_id`);
+
+--
+-- Indices de la tabla `quotation`
+--
+ALTER TABLE `quotation`
+  ADD PRIMARY KEY (`Quo_id`),
+  ADD KEY `version_fk` (`Quo_parentNumber`),
+  ADD KEY `Host_id` (`Host_id`),
+  ADD KEY `Ssl_id` (`Ssl_id`),
+  ADD KEY `Domain_id` (`Domain_id`),
+  ADD KEY `Email_id` (`Email_id`),
+  ADD KEY `Stat_id` (`Stat_id`);
+
+--
+-- Indices de la tabla `quotation_task`
+--
+ALTER TABLE `quotation_task`
+  ADD PRIMARY KEY (`Quot_id`),
+  ADD KEY `Prof_id` (`Prof_id`),
+  ADD KEY `Quo_id` (`Quo_id`);
 
 --
 -- Indices de la tabla `recovery_password`
@@ -449,6 +622,12 @@ ALTER TABLE `security_gxmxaxp`
   ADD PRIMARY KEY (`Sgxmxaxp_id`);
 
 --
+-- Indices de la tabla `ssl_service`
+--
+ALTER TABLE `ssl_service`
+  ADD PRIMARY KEY (`Ssl_id`);
+  
+--
 -- Indices de la tabla `status`
 --
 ALTER TABLE `status`
@@ -486,10 +665,28 @@ ALTER TABLE `company`
   MODIFY `Comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `domain_service`
+--
+ALTER TABLE `domain_service`
+  MODIFY `Domain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `email_service`
+--
+ALTER TABLE `email_service`
+  MODIFY `Email_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `events`
 --
 ALTER TABLE `events`
   MODIFY `Event_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `host_service`
+--
+ALTER TABLE `host_service`
+  MODIFY `Host_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `login`
@@ -520,6 +717,17 @@ ALTER TABLE `permission`
 --
 ALTER TABLE `provider`
   MODIFY `Pro_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `quotation`
+--
+ALTER TABLE `quotation`
+  MODIFY `Quo_id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- AUTO_INCREMENT de la tabla `quotation_task`
+--
+ALTER TABLE `quotation_task`
+  MODIFY `Quot_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `recovery_password`
@@ -563,6 +771,12 @@ ALTER TABLE `security_gxmxa`
 ALTER TABLE `security_gxmxaxp`
   MODIFY `Sgxmxaxp_id` int(11) NOT NULL AUTO_INCREMENT;
 
+--
+-- AUTO_INCREMENT de la tabla `ssl_service`
+--
+ALTER TABLE `ssl_service`
+  MODIFY `Ssl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  
 --
 -- AUTO_INCREMENT de la tabla `status`
 --
@@ -620,6 +834,24 @@ ALTER TABLE `new_user`
 --
 ALTER TABLE `provider`
   ADD CONSTRAINT `status_provider` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`);
+
+--
+-- Filtros para la tabla `quotation`
+--
+ALTER TABLE `quotation`
+  ADD CONSTRAINT `quotation_ibfk_1` FOREIGN KEY (`Host_id`) REFERENCES `host_service` (`Host_id`),
+  ADD CONSTRAINT `quotation_ibfk_2` FOREIGN KEY (`Ssl_id`) REFERENCES `ssl_service` (`Ssl_id`),
+  ADD CONSTRAINT `quotation_ibfk_3` FOREIGN KEY (`Domain_id`) REFERENCES `domain_service` (`domain_id`),
+  ADD CONSTRAINT `quotation_ibfk_4` FOREIGN KEY (`Email_id`) REFERENCES `email_service` (`email_id`),
+  ADD CONSTRAINT `quotation_ibfk_5` FOREIGN KEY (`Stat_id`) REFERENCES `status` (`Stat_id`),
+  ADD CONSTRAINT `version_fk` FOREIGN KEY (`Quo_parentNumber`) REFERENCES `quotation` (`Quo_id`);
+
+-- Filtros para la tabla `quotation_task`
+--
+ALTER TABLE `quotation_task`
+  ADD CONSTRAINT `quotation_task_ibfk_1` FOREIGN KEY (`Prof_id`) REFERENCES `profile` (`Prof_id`),
+  ADD CONSTRAINT `quotation_task_ibfk_2` FOREIGN KEY (`Quo_id`) REFERENCES `quotation` (`Quo_id`);
+COMMIT;
 
 --
 -- Filtros para la tabla `recovery_password`

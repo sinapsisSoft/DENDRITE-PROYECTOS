@@ -171,68 +171,6 @@ if (!isset($_SESSION['User'])) {
           </div>
           <!-- SINAPSIS -->
 
-
-          <!-- PROFILE -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">PERFIL</h6>
-              <!-- <ul class="nav nav-pills card-header-pills">               -->
-              </ul>
-            </div>
-            <div class="card-body" style="text-align: right;">
-              <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
-              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
-              <form id="form_plan" class="text-left">
-                <div class="table-responsive">
-                  <table class="table  " data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
-                    <thead class="text-wine">
-                      <tr>
-                        <th>PERFIL</th>
-                        <th>VALOR</th>
-                        <th>DÍAS L </th>
-                        <th>HORA L </th>
-                        <th>ELIMINAR </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style="width: 40%;">
-                          <div class="form-group">
-                            <select class="form-control">
-                              <option>Desarrollador I</option>
-                            </select>
-                          </div>
-                        </td>
-                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="$12.450"></td>
-                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="4"></td>
-                        <td style="width: 20%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
-                        <td>
-                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="width: 40%;">
-                          <div class="form-group">
-                            <select class="form-control">
-                              <option>Desarrollador II</option>
-                            </select>
-                          </div>
-                        </td>
-                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="$20.00"></td>
-                        <td style="width: 10%;"><input type="text" class="form-control" required="" readonly="" value="3"></td>
-                        <td style="width: 20%;"><input type="text" class="form-control" required="" readonly="" value="12"></td>
-                        <td>
-                          <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- PROFILE-->
-
           <!-- EXERCISE-->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -241,28 +179,24 @@ if (!isset($_SESSION['User'])) {
               </ul>
             </div>
             <div class="card-body" style="text-align: right;">
-              <a href="#" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exqInsureModalCenter" onclick="clearForm('form_insure', 1);" style="
-              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>
+              <a href="#userModal" class="btn btn-primary btn-success" data-toggle="modal" data-target="#userModal" onclick="clearForm('form_insure', 1);" style="
+              margin-bottom: 20px;">Añadir <i class="fas fa-plus"></i></a>              
               <form id="form_plan" class="text-left" action="#!" onsubmit="sendData(this.id,event,0);return false">
                 <div class="table-responsive-md">
                   <table class="table table-sm" style="font-size: 0.75rem;" data-order="[[ 1, &quot;asc&quot; ]]" data-page-length="25" id="tableCustomers" width="100%" cellspacing="0">
                     <thead class="text-wine">
                       <tr>
-                        <th>ACTIVIDAD</th>
-                        <th style="width: 7%;">MÁS PROBABLE</th>
-                        <th style="width: 7%;">OPTIMISTA </th>
-                        <th style="width: 7%;">PESIMISTA</th>
-                        <th style="width: 7%;">ESPERADA</th>
-                        <th style="width: 130px;">VALOR NETO </th>
-                        <th style="width: 130px;">VALOR COMISIÓN</th>
-                        <th style="width: 130px;" class="text-wrap">VALOR ADMIN.</th>
-                        <th style="width: 130px;">VALOR TOTAL</th>
-                        <th style="width: 7%;">ELIMINAR</th>
+                       
+                        <th style="width: 2%;">MÁS PROBABLE</th>                       
+                        <th style="width: 2%;">PESIMISTA</th>
+                        <th style="width: 1%;">ESPERADA</th>
+                        <th style="width: 300px;">VALOR NETO </th>
+                        <th style="width: 300px;">VALOR COMISIÓN</th>
+                        <th style="width: 300px;" class="text-wrap">VALOR ADMIN.</th>
+                        <th style="width: 300px;">VALOR TOTAL</th>
                     <tbody>
                       <tr>
-                        <td><input type="text" class="form-control" required="" value="CRUD"> </td>
                         <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
@@ -270,15 +204,14 @@ if (!isset($_SESSION['User'])) {
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
                         <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                             <button type="button" style="margin:0; padding:5px" class="btn btn-primary" value=""> <i class="material-icons">border_color</i></button>  
+                            <button type="button" style="margin:0; padding:5px" class="btn btn-danger" value=""> <i class="material-icons">remove_circle_outline</i></button> 
+                        </div>
                         </td>
                       </tr>
                       <tr>
-                        <td><input type="text" class="form-control" required="" value="Calculadora ATS/IDSA"> </td>
                         <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
@@ -286,15 +219,14 @@ if (!isset($_SESSION['User'])) {
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
                         <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" style="margin:0; padding:5px" class="btn btn-primary" value=""> <i class="material-icons">border_color</i></button>  
+                            <button type="button" style="margin:0; padding:5px" class="btn btn-danger" value=""> <i class="material-icons">remove_circle_outline</i></button> 
+                        </div>
                         </td>
                       </tr>
                       <tr>
-                        <td><input type="text" class="form-control" required="" value="Ajustes Generales"> </td>
                         <td><input type="text" class="form-control" required="" readonly="" value="7"></td>
-                        <td><input type="text" class="form-control" required="" value="4"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="12"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="5"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></td>
@@ -302,15 +234,16 @@ if (!isset($_SESSION['User'])) {
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$ 99.840"></td>
                         <td>
-                          <div>
-                            <button class="btn btn-danger" style="margin:0; padding:5px" value=""><i class="material-icons">remove_circle_outline</i></button>
-                          </div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" style="margin:0; padding:5px" class="btn btn-primary" value=""> <i class="material-icons">border_color</i></button>  
+                            <button type="button" style="margin:0; padding:5px" class="btn btn-danger" value=""> <i class="material-icons">remove_circle_outline</i></button> 
+                        </div>
                         </td>
                       </tr>
                     </tbody>
                     <tfoot>
-                      <tr class="table-danger">
-                        <th colspan="4"><label>TOTALES</label></th>
+                      <tr class="table-primary">
+                        <th colspan="2"><label>TOTALES</label></th>
                         <th><input type="text" class="form-control" required="" readonly="" value="5"></th>
                         <th><input type="text" class="form-control" required="" readonly="" value="$ 49.800"></th>
                         <th><input type="text" class="form-control" required="" readonly="" value="$ 39.840"></th>
@@ -357,7 +290,7 @@ if (!isset($_SESSION['User'])) {
                         <th>OPERATIVO</th>
                         <th>TOTAL</th>
                         <th style="color: red;">PRECIO TOTAL</th>
-                        <tbody>
+                    <tbody>
                       <tr>
                         <td><input type="text" class="form-control" required="" value="OPERATIVO"> </td>
                         <td><input type="text" class="form-control" required="" readonly="" value="$1.279.200"></td>
@@ -430,12 +363,13 @@ if (!isset($_SESSION['User'])) {
       </div>
     </div>
   </div>
+
   <!-- Modal -->
   <div class="modal fade fullscreen-modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="userModalLabel">Usuarios</h5>
+          <h5 class="modal-title" id="userModalLabel">PERFIL</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -443,104 +377,60 @@ if (!isset($_SESSION['User'])) {
         <div class="modal-body">
           <div class="col-md-12">
             <form id="form_users" class="text-left  was-validated" action="#!" onsubmit="confirmPass();return false">
-              <input type="number" id="User_id" style="visibility:hidden">
+              <input type="number" id="" style="visibility:hidden">
               <div class="form-row mb-1">
-                <div class="col-md-3 mb-1">
-                  <!-- Documento -->
-                  <label class="bmd-label-floating"> Identificación</label>
-                  <input type="text" id="User_identification" class="form-control form-control-sm read" placeholder="Identificación" required>
+                <div class="col-md-6 mb-1">
+                  <!-- Nombre -->
+                  <label class="bmd-label-floating">ACTIVIDAD</label>
+                  <input type="text" id="" class="form-control form-control-sm " required>
                   <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione una identificación válido.</div>
+                  <div class="invalid-feedback">Ingrese la actividad</div>
+                </div>               
+               
+                <div class="col-md-3 mb-1">
+                  <!-- Nombre -->
+                  <label class="bmd-label-floating">OPTIMISTA</label>
+                  <input type="text" id="" class="form-control form-control-sm " required>
+                  <div class="valid-feedback">Ok!</div>
+                  <div class="invalid-feedback">Ingrese el valor.</div>
                 </div>
                 <div class="col-md-3 mb-1">
                   <!-- Nombre -->
-                  <label class="bmd-label-floating"> Nombre</label>
-                  <input type="text" id="User_name" class="form-control form-control-sm " placeholder="Nombre" required>
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione un nombre válido.</div>
-                </div>
-                <div class="col-md-4 mb-1">
-                  <!-- Email -->
-                  <label class="bmd-label-floating"> E-mail</label>
-                  <input type="email" id="User_email" class="form-control form-control-sm read" placeholder="E-mail" required>
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione un e-mail válido.</div>
-                </div>
-                <div class="col-md-2 mb-1">
-                  <!-- Teléfono -->
-                  <label class="bmd-label-floating"> Teléfono</label>
-                  <input type="text" pattern="[0-9]{7,10}" id="User_telephone" class="form-control form-control-sm" placeholder="Teléfono" maxlength="10">
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione un teléfono válido.</div>
-                </div>
-              </div>
-              <div class="form-row mb-1">
-                <div class="col-md-3 mb-1">
-                  <!-- Cargo -->
-                  <label class="bmd-label-floating"> Cargo</label>
-                  <input type="text" id="User_title" class="form-control form-control-sm " placeholder="Cargo" required>
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione un dato válido.</div>
-                </div>
-                <div class="col-md-3 mb-1 password">
-                  <!-- Contraseña -->
-                  <label class="bmd-label-floating"> Contraseña</label>
-                  <input type="password" pattern=".{6,}" id="Login_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Contraseña" required>
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Proporcione una contraseña válida.</div>
-                </div>
-                <div class="col-md-4 mb-1 password">
-                  <!-- Confirmar Contraseña -->
-                  <label class="bmd-label-floating">Confirmar Contraseña</label>
-                  <div class="input-group mb-2">
-                    <input type="password" pattern=".{6,}" id="Repeat_password" title="Ocho o más caracteres" class="form-control form-control-sm pass " placeholder="Confirme Contraseña" required>
-                    <div class="input-group-prepend">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input btn-primary" id="defaultUnchecked">
-                        <label class="custom-control-label" style="margin-left: 10px" for="defaultUnchecked"><i class="material-icons viewI">visibility_off</i></label>
-                      </div>
-                    </div>
-                    <div class="valid-feedback">Ok!</div>
-                    <div class="invalid-feedback">Proporcione una confirme contraseña válida.</div>
+                  <label class="bmd-label-floating">Perfil</label>
+                  <div class="form-group">
+                    <select class="form-control">
+                      <option selected>-- Seleccione una opción --</option>
+                      <option>Desarrollador I</option>
+                      <div class="valid-feedback">Ok!</div>
+                    </select>
                   </div>
-
-                </div>
-                <div class="col-md-2 mb-1">
-                  <!-- Estado -->
-                  <label class="bmd-label-floating">Estado</label>
-                  <select id="Stat_id" class="custom-select custom-select-sm" required>
-                  </select>
-                  <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Seleccione una opción válido.</div>
-                </div>
               </div>
               <div class="form-row mb-1">
                 <div class="col-md-3 mb-1">
-                  <!-- Rol -->
-                  <label class="bmd-label-floating"> Rol</label>
-                  <select id="Role_id" class="custom-select custom-select-sm" required>
-                    <option disabled selected value> -- Seleccione una opción -- </option>
-
-                  </select>
+                  <!-- Nombre -->
+                  <label class="bmd-label-floating">Valor</label>
+                  <input type="text" id="e" class="form-control form-control-sm " required>
                   <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Seleccione una opción válido.</div>
+                  <div class="invalid-feedback">Ingrese el valor.</div>
                 </div>
                 <div class="col-md-3 mb-1">
-                  <!-- Grupo de seguridad -->
-                  <label class="bmd-label-floating"> Grupo de seguridad</label>
-                  <select id="Sgroup_id" class="custom-select custom-select-sm" required>
-                    <option disabled selected value> -- Seleccione una opción -- </option>
-
-                  </select>
+                  <!-- Nombre -->
+                  <label class="bmd-label-floating">Dias L</label>
+                  <input type="text" id="" class="form-control form-control-sm " required>
                   <div class="valid-feedback">Ok!</div>
-                  <div class="invalid-feedback">Seleccione una opción válido.</div>
+                  <div class="invalid-feedback">Ingrese los dias.</div>
                 </div>
-              </div>
-              <!-- -->
-
-              <div class="alertPassword alertHidden" id="alertPassword" role="alert">
-                Contraseña no coincide
-              </div>
+                <div class="col-md-3 mb-1">
+                  <!-- Nombre -->
+                  <label class="bmd-label-floating">Hora L</label>
+                  <input type="text" id="" class="form-control form-control-sm " required>
+                  <div class="valid-feedback">Ok!</div>
+                  <div class="invalid-feedback">Ingrese los dias.</div>
+                </div>               
+                <!-- -->
+                <div class="alertPassword alertHidden" id="alertPassword" role="alert">
+                  Contraseña no coincide
+                </div>
 
             </form>
           </div>
@@ -576,9 +466,7 @@ if (!isset($_SESSION['User'])) {
   <script src="../../js/table.js"></script>
   <script src="../../js/selectList.js"></script>
   <script src="../../js/properties.js"></script>
-
-
-
+  <script src="js/quotation.js"></script>
 </body>
 
 </html>
